@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@types/mongoose": "^5.10.5",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.25.0",
@@ -13,20 +14,31 @@
     "eslint-plugin-prettier": "^3.4.0",
     "husky": ">=6",
     "lint-staged": ">=10",
-    "prettier": "^2.2.1",
+    "prettier": "2.3.0",
     "pretty-quick": "^3.1.0",
+    "ts-node": "^10.0.0",
     "typescript": "^4.2.4"
   },
   "lint-staged": {
-    "*.{ts,js}": "eslint --cache --fix"
+    "/src/*.{ts,js}": "eslint --cache --fix"
   },
   "scripts": {
-    "prepare": "husky install",
-    "lint":"pretty-quick --staged && lint-staged"
+    "postinstall": "husky install",
+    "lint": "pretty-quick --staged && lint-staged",
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "start": "cd dist/src && node index.js",
+    "build": "tsc -b"
   },
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint"
     }
+  },
+  "dependencies": {
+    "@types/express": "^4.17.12",
+    "@types/redis": "^2.8.28",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.12",
+    "redis": "^3.1.2"
   }
 }
