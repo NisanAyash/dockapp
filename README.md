@@ -1,4 +1,4 @@
-# dockapp -
+# dockapp
 
 dockapp created for practice with docker.
 this is a simple nodejs app, using typescript with configuration to eslint & prettier & husky.  
