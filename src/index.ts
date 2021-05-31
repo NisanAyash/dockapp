@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express'
 import connectDb from './config/mongo-connect'
 import redisClient from './config/redis-connect'
-
+import pool from './config/pg-connect'
 import User from './models/User'
 
 connectDb()
@@ -39,6 +39,15 @@ app.get('/redis', (req, res) => {
     if (err) throw err
     console.log(reply)
     res.json({ redis: reply })
+  })
+})
+
+app.get('/postgres', (req, res) => {
+  pool.query('SELECT NOW()', (err, pgRes) => {
+    console.log(err, pgRes)
+    console.log('SELECT NOW()', pgRes)
+    pool.end()
+    res.json({ posgres: err || true, pgRes })
   })
 })
 
