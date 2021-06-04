@@ -8,7 +8,7 @@ Implementation 3 services:
 - mongo client (express-mongo)
 - redis 
 
-you can run this project with 2 commands
+you can run this project with 2 commands,
 open bash terminal in the root folder
 
 1. ```docker-compose up -d``` 
